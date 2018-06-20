@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-client" />
+        <module name="confit-client2" />
+        <module name="eureka-server" />
+        <module name="weather-city-server" />
+        <module name="weather-collection-server" />
+        <module name="weather-config-server" />
+        <module name="weather-data-server" />
+        <module name="weather-report-server" />
+        <module name="weather-zuul-server" />
+        <module name="weathernew" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
