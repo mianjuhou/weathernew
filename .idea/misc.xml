@@ -13,7 +13,6 @@
         <option value="$PROJECT_DIR$/weather-zuul-server/pom.xml" />
         <option value="$PROJECT_DIR$/weather-config-server/pom.xml" />
         <option value="$PROJECT_DIR$/config-client/pom.xml" />
-        <option value="$PROJECT_DIR$/confit-client2/pom.xml" />
       </list>
     </option>
   </component>

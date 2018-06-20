@@ -9,67 +9,75 @@
     <title>房德安的天气预报</title>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <h3 th:text="${reportModel.title}">标题</h3>
-        <h3 th:text="${reportModel.domain}">网址</h3>
-        <select class="custom-select" id="selectCityId">
-            <option th:each="city : ${reportModel.cityList}"
-                    th:value="${city.cityId}"
-                    th:text="${city.cityName}"
-                    th:selected="${city.cityId eq reportModel.cityId}"
-            />
-        </select>
-    </div>
-    <div class="row">
-        <h1 class="text-success" th:text="${reportModel.report.city}">城市名称</h1>
-    </div>
-    <div class="row">
-        <p>
-            空气质量指数：<span th:text="${reportModel.report.aqi}"/>
-        </p>
-    </div>
-    <div class="row">
-        <p>
-            当前温度：<span th:text="${reportModel.report.wendu}"/>
-        </p>
-    </div>
-    <div class="row">
-        <p>
-            温馨提示：<span th:text="${reportModel.report.ganmao}"/>
-        </p>
-    </div>
-    <div class="row">
-        <div class="card border-info" th:each="forecast : ${reportModel.report.forecast}">
-            <div class="card-body text-info">
-                <p class="card-text" th:text="${forecast.date}">日期</p>
-                <p class="card-text" th:text="${forecast.type}">天气类型</p>
-                <p class="card-text" th:text="${forecast.high}">最高温度</p>
-                <p class="card-text" th:text="${forecast.low}">最低温度</p>
-                <p class="card-text" th:text="${forecast.fengxiang}">风向</p>
+<div th:if="${reportModel.report != null}">
+    <div class="container">
+        <div class="row">
+            <h3 th:text="${reportModel.title}">标题</h3>
+            <h3 th:text="${reportModel.domain}">网址</h3>
+            <select class="custom-select" id="selectCityId">
+                <option th:each="city : ${reportModel.cityList}"
+                        th:value="${city.cityId}"
+                        th:text="${city.cityName}"
+                        th:selected="${city.cityId eq reportModel.cityId}"
+                />
+            </select>
+        </div>
+        <div class="row">
+            <h1 class="text-success" th:text="${reportModel.report.city}">城市名称</h1>
+        </div>
+        <div class="row">
+            <p>
+                空气质量指数：<span th:text="${reportModel.report.aqi}"/>
+            </p>
+        </div>
+        <div class="row">
+            <p>
+                当前温度：<span th:text="${reportModel.report.wendu}"/>
+            </p>
+        </div>
+        <div class="row">
+            <p>
+                温馨提示：<span th:text="${reportModel.report.ganmao}"/>
+            </p>
+        </div>
+        <div class="row">
+            <div class="card border-info" th:each="forecast : ${reportModel.report.forecast}">
+                <div class="card-body text-info">
+                    <p class="card-text" th:text="${forecast.date}">日期</p>
+                    <p class="card-text" th:text="${forecast.type}">天气类型</p>
+                    <p class="card-text" th:text="${forecast.high}">最高温度</p>
+                    <p class="card-text" th:text="${forecast.low}">最低温度</p>
+                    <p class="card-text" th:text="${forecast.fengxiang}">风向</p>
+                </div>
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-            crossorigin="anonymous"></script>
-    <!--<script th:src="@{/js/weather/report.js}"></script>-->
-    <script type="text/javascript">
-        $(function () {
-            $("#selectCityId").change(function () {
-                var cityId = $("#selectCityId").val();
-                var url = '/report/cityId/' + cityId;
-                window.location.href = url;
-            })
-        });
-    </script>
 </div>
+<div th:if="${reportModel.report == null}">
+    <div class="row">
+        <p>
+            天气数据API服务不可用
+        </p>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<!--<script th:src="@{/js/weather/report.js}"></script>-->
+<script type="text/javascript">
+    $(function () {
+        $("#selectCityId").change(function () {
+            var cityId = $("#selectCityId").val();
+            var url = '/report/cityId/' + cityId;
+            window.location.href = url;
+        })
+    });
+</script>
 </body>
 </html>

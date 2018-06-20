@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-client" />
-        <module name="confit-client2" />
         <module name="eureka-server" />
         <module name="weather-city-server" />
         <module name="weather-collection-server" />
@@ -18,5 +17,9 @@
         <module name="weathernew" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="confit-client2" target="1.8" />
+      <module name="hystrix-server" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -17,10 +17,13 @@ public class WeatherReportService {
 
     public Weather getWeatherByCityId(String cityId) {
         WeatherResponse response = zuulClient.getWeatherByCityId(cityId);
+        if (response == null) {
+            return null;
+        }
         return response.getData();
     }
 
-    public List<City> listCity(){
+    public List<City> listCity() {
         return zuulClient.listCity();
     }
 }

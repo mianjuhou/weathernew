@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@FeignClient(name = "weather-zuul-server")
+@FeignClient(name = "weather-zuul-server", fallback = ZuulClientFallback.class)
 public interface ZuulClient {
 
     @RequestMapping("/city/city/list")
